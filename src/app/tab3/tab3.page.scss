@@ -1,3 +1,24 @@
 ion-content ion-toolbar {
-  --background: translucent;
+    --background: translucent;
+}
+
+.titulo {
+    font-weight: 600;
+}
+
+.card-round {
+    border-radius: 25px;
+    box-shadow: 0px 10px 20px 0px rgba(114, 110, 110, 0.59);
+}
+
+.titulo-casos {
+    font-size: large;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 380px) {
+    .titulo-casos {
+        font-size: smaller;
+        font-weight: 600;
+    }
 }

@@ -1,17 +1,144 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title class="titulo ion-text-capitalize">
+            Casos por pais
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title class="titulo ion-text-capitalize" size="large">Casos por Pais</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-list *ngIf="paises">
+        <ion-item>
+            <ion-label class="font-label">Paises</ion-label>
+            <ion-select interface="action-sheet" value="Colombia" class="font-select" placeholder="Selecciona uno" [interfaceOptions]="customActionSheetOptions" (ionChange)="paisSeleccionado( $event )">
+                <ion-select-option *ngFor="let pais of paises" value="{{pais.country}}"> {{pais.country}}-({{pais.cases}}) </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <div *ngIf="pais">
+            <!-- <ion-item>
+                <ion-chip>
+                    <ion-avatar>
+                        <img [src]=pais.countryInfo.flag>
+                    </ion-avatar>
+                    <ion-label class="font-label">{{pais.country}}</ion-label>
+                </ion-chip>
+            </ion-item>
+
+
+
+            <ion-item class="ion-text-center">
+                <ion-label class="ion-text-wrap">
+                    <ion-text class="titulo-casos">
+                        Confirmados totales
+                    </ion-text>
+                    <ion-text class="numero-casos" color="danger">
+                        {{pais.cases || 0}}
+                    </ion-text>
+
+                </ion-label>
+
+            </ion-item>
+            <ion-item class="ion-text-center">
+                <ion-label class="ion-text-wrap">
+                    <ion-text class="titulo-casos">
+                        Muertes totales
+                    </ion-text>
+                    <br>
+                    <ion-text class="numero-casos" color="medium">
+                        {{pais.deaths || 0}}
+                    </ion-text>
+
+                </ion-label>
+
+            </ion-item>
+            <ion-item class="ion-text-center">
+                <ion-label class="ion-text-wrap">
+                    <ion-text class="titulo-casos">
+                        Recuperados totales
+                    </ion-text>
+                    <ion-text class="numero-casos" color="success">
+                        {{pais.recovered || 0}}
+                    </ion-text>
+
+                </ion-label>
+
+            </ion-item> -->
+
+
+
+            <ion-grid>
+
+
+                <ion-row>
+                    <ion-col size="12" size-sm>
+                        <ion-card class="card-round">
+                            <ion-card-header>
+
+                                <ion-item lines="full">
+                                    <ion-avatar slot="start">
+                                        <img [src]="pais.countryInfo.flag">
+                                    </ion-avatar>
+                                    <ion-label class="titulo-casos">{{pais.country}}</ion-label>
+                                </ion-item>
+
+                            </ion-card-header>
+                            <ion-card-content>
+
+                                <ion-list>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Casos Confirmados</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="primary">{{pais.cases | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Casos del Dia</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="secondary">{{pais.todayCases | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Muertes</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="danger ">{{pais.deaths | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Muertes del Dia</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="dark">{{pais.todayDeaths | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Recuperados</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="success">{{pais.recovered | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Casos Activos</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="tertiary">{{pais.active | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Casos Criticos</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="warning">{{pais.critical | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Casos por Millon</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="medium">{{pais.casesPerOneMillion | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Muertes por Millon</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="light">{{pais.deathsPerOneMillion | number}}</ion-badge>
+                                    </ion-item>
+                                </ion-list>
+
+
+
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ion-list>
+
+
 </ion-content>
