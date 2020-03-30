@@ -13,6 +13,7 @@ export class Tab3Page implements OnInit {
   @ViewChild( 'radarChart', {static: true} ) radarChart;
 
   cases = [];
+  recovered = [];
   dateCases = [];
   deaths = [];
   casesPie;
@@ -36,6 +37,7 @@ export class Tab3Page implements OnInit {
   async getHistory( ) {
     await this.covidApi.callGetHistory().subscribe(resp => {
       this.cases = Object.values(resp.timeline.cases);
+      this.recovered = Object.values(resp.timeline.recovered);
       this.dateCases = Object.keys(resp.timeline.cases);
       this.deaths = Object.values(resp.timeline.deaths);
       this.country = resp.country;
@@ -66,7 +68,7 @@ export class Tab3Page implements OnInit {
       data: {
         labels: this.dateCases,
         datasets: [{
-          label: 'Casos Confirmados',
+          label: 'Casos',
           data: this.cases,
           backgroundColor: 'rgb(0,0,0,0)', // array should have same number of elements as number of dataset
           borderColor: '#ffa600', // array should have same number of elements as number of dataset
@@ -76,6 +78,12 @@ export class Tab3Page implements OnInit {
           data: this.deaths,
           backgroundColor: 'rgb(0,0,0,0)', // array should have same number of elements as number of dataset
           borderColor: '#ff6361', // array should have same number of elements as number of dataset
+          borderWidth: 2
+        }, {
+          label: 'Recuperados',
+          data: this.recovered,
+          backgroundColor: 'rgb(0,0,0,0)', // array should have same number of elements as number of dataset
+          borderColor: '#58508d', // array should have same number of elements as number of dataset
           borderWidth: 2
         }]
       },

@@ -41,9 +41,7 @@ export class Tab2Page implements OnInit {
   }
 
   getPaises() {
-    this.covidApi.getAllContry().subscribe(resp => {
-      this.paises = resp;
-    });
+    this.covidApi.getAllContry().subscribe(resp => this.paises = resp);
   }
 
   getPais( pais ) {

@@ -1,0 +1,42 @@
+ion-content ion-toolbar {
+    --background: translucent;
+}
+
+.titulo {
+    font-weight: 600;
+}
+
+.card-round {
+    border-radius: 25px;
+    box-shadow: 0px 10px 20px 0px rgba(114, 110, 110, 0.59);
+}
+
+.titulo-casos {
+    font-size: large;
+    font-weight: 600;
+}
+
+.header .col {
+    background-color: lightgrey;
+}
+
+.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
+
+@media only screen and (max-width: 380px) {
+    .titulo-casos {
+        font-size: smaller;
+        font-weight: 600;
+    }
+}

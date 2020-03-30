@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CovidApiService } from '../services/covid-api.service';
+import { Countrys } from '../interfaces/covid.interface';
+
 
 @Component({
   selector: 'app-tab4',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  paises: Countrys;
+
+  constructor(
+    private covidApi: CovidApiService
+  ) { }
 
   ngOnInit() {
+    // this.getPaises();
+  }
+
+  ionViewWillEnter() {
+    this.getPaises();
+  }
+
+  getPaises() {
+    this.covidApi.getAllContry().subscribe(resp => {
+      this.paises = resp;
+    });
   }
 
 }

@@ -44,6 +44,7 @@ export interface HistoryCountry {
 export interface Timeline {
     cases: { [key: string]: number };
     deaths: { [key: string]: number };
+    recovered: { [key: string]: number };
 }
 
 

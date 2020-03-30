@@ -94,27 +94,27 @@
                                 <ion-list>
                                     <ion-item lines="none">
                                         <ion-label class="font-badge ion-text-capitalize">Casos Confirmados</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="primary">{{pais.cases | number}}</ion-badge>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="light">{{pais.cases | number}}</ion-badge>
                                     </ion-item>
                                     <ion-item lines="none">
-                                        <ion-label class="font-badge ion-text-capitalize">Casos del Dia</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="secondary">{{pais.todayCases | number}}</ion-badge>
-                                    </ion-item>
-                                    <ion-item lines="none">
-                                        <ion-label class="font-badge ion-text-capitalize">Muertes</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="danger ">{{pais.deaths | number}}</ion-badge>
-                                    </ion-item>
-                                    <ion-item lines="none">
-                                        <ion-label class="font-badge ion-text-capitalize">Muertes del Dia</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="dark">{{pais.todayDeaths | number}}</ion-badge>
+                                        <ion-label class="font-badge ion-text-capitalize">Casos Activos</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="tertiary">{{pais.active | number}}</ion-badge>
                                     </ion-item>
                                     <ion-item lines="none">
                                         <ion-label class="font-badge ion-text-capitalize">Recuperados</ion-label>
                                         <ion-badge class="font-badge" mode="ios" slot="end" color="success">{{pais.recovered | number}}</ion-badge>
                                     </ion-item>
                                     <ion-item lines="none">
-                                        <ion-label class="font-badge ion-text-capitalize">Casos Activos</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="tertiary">{{pais.active | number}}</ion-badge>
+                                        <ion-label class="font-badge ion-text-capitalize">Muertes</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="dark">{{pais.deaths | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Casos del Dia</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="danger">{{pais.todayCases | number}}</ion-badge>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label class="font-badge ion-text-capitalize">Muertes del Dia</ion-label>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="medium">{{pais.todayDeaths | number}}</ion-badge>
                                     </ion-item>
                                     <ion-item lines="none">
                                         <ion-label class="font-badge ion-text-capitalize">Casos Criticos</ion-label>
@@ -122,11 +122,11 @@
                                     </ion-item>
                                     <ion-item lines="none">
                                         <ion-label class="font-badge ion-text-capitalize">Casos por Millon</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="medium">{{pais.casesPerOneMillion | number}}</ion-badge>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="secondary">{{pais.casesPerOneMillion | number}}</ion-badge>
                                     </ion-item>
                                     <ion-item lines="none">
                                         <ion-label class="font-badge ion-text-capitalize">Muertes por Millon</ion-label>
-                                        <ion-badge class="font-badge" mode="ios" slot="end" color="light">{{pais.deathsPerOneMillion | number}}</ion-badge>
+                                        <ion-badge class="font-badge" mode="ios" slot="end" color="primary">{{pais.deathsPerOneMillion | number}}</ion-badge>
                                     </ion-item>
                                 </ion-list>
 
