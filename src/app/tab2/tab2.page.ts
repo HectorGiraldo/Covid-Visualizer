@@ -1,8 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CovidApiService } from '../services/covid-api.service';
 import { Countrys } from '../interfaces/covid.interface';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
-
+class Port {
+  public id: number;
+  public name: string;
+}
 
 
 @Component({
@@ -12,8 +16,10 @@ import { Countrys } from '../interfaces/covid.interface';
 })
 export class Tab2Page implements OnInit {
 
+
   paises: Countrys;
   pais: Countrys;
+  paisSelect: Countrys[];
 
 
   customActionSheetOptions: any = {
@@ -23,7 +29,9 @@ export class Tab2Page implements OnInit {
 
   constructor(
     private covidApi: CovidApiService
-  ) {}
+  ) {
+ 
+  }
 
   ngOnInit() {
     this.getPais('Colombia');
@@ -31,14 +39,21 @@ export class Tab2Page implements OnInit {
 
   }
 
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    this.getPais(event.value.country);
+  }
+
   ionViewWillEnter() {
     this.getPaises();
   }
 
 
-  paisSeleccionado( event ) {
-    this.getPais(event.detail.value);
-  }
+  // paisSeleccionado( event ) {
+  //   this.getPais(event.detail.value);
+  // }
 
   getPaises() {
     this.covidApi.getAllContry().subscribe(resp => this.paises = resp);

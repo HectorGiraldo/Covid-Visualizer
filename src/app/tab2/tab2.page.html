@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title class="titulo ion-text-capitalize">
-            Casos por pais
+            Casos por país
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -9,17 +9,32 @@
 <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
         <ion-toolbar>
-            <ion-title class="titulo ion-text-capitalize" size="large">Casos por Pais</ion-title>
+            <ion-title class="titulo ion-text-capitalize" size="large">Casos por País</ion-title>
         </ion-toolbar>
     </ion-header>
 
     <ion-list *ngIf="paises">
-        <ion-item>
-            <ion-label class="font-label">Paises</ion-label>
+        <!-- <ion-item>
+            <ion-label class="font-label">Países</ion-label>
             <ion-select interface="action-sheet" value="Colombia" class="font-select" placeholder="Selecciona uno" [interfaceOptions]="customActionSheetOptions" (ionChange)="paisSeleccionado( $event )">
                 <ion-select-option *ngFor="let pais of paises" value="{{pais.country}}"> {{pais.country}}-({{pais.cases}}) </ion-select-option>
             </ion-select>
+        </ion-item> -->
+
+        <ion-item>
+            <ion-label>Países</ion-label>
+            <ionic-selectable [(ngModel)]="paisSelect" [items]="paises" itemValueField="cases" itemTextField="country" [canSearch]="true" [shouldFocusSearchbar]="true" (onChange)="portChange($event)">
+                <ng-template ionicSelectableSearchFailTemplate>
+                    <div class="ion-padding titulo-caso">
+                        País no encontrado.
+                    </div>
+                </ng-template>
+            </ionic-selectable>
         </ion-item>
+
+
+
+
 
         <div *ngIf="pais">
             <!-- <ion-item>

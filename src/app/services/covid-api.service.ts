@@ -11,7 +11,7 @@ const apiUrlV2 = environment.apiUrlV2;
 })
 export class CovidApiService {
 
-  pais;
+  pais = 'Colombia';
 
   constructor(
     private http: HttpClient
@@ -44,10 +44,13 @@ export class CovidApiService {
   }
 
   callGetHistory() {
+
     return this.gethistoryCountry( this.pais);
+
   }
 
   callGetCountry() {
+
     return this.getContry(this.pais);
   }
 }

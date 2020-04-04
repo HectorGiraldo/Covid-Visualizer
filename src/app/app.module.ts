@@ -14,6 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { ChartsModule } from 'ng2-charts';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { ChartsModule } from 'ng2-charts';
     AppRoutingModule,
     HttpClientModule,
     ChartsModule,
+    IonicSelectableModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

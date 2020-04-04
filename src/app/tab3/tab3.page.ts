@@ -30,12 +30,12 @@ export class Tab3Page implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.covidApi.getContry('Colombia');
-    this.covidApi.gethistoryCountry('Colombia');
+    // this.covidApi.getContry('Colombia');
+    // this.covidApi.gethistoryCountry('Colombia');
   }
 
-  async getHistory( ) {
-    await this.covidApi.callGetHistory().subscribe(resp => {
+  getHistory( ) {
+      this.covidApi.callGetHistory().subscribe(resp => {
       this.cases = Object.values(resp.timeline.cases);
       this.recovered = Object.values(resp.timeline.recovered);
       this.dateCases = Object.keys(resp.timeline.cases);
@@ -46,9 +46,9 @@ export class Tab3Page implements OnInit {
 
   }
 
-  async getCountry() {
+  getCountry() {
 
-    await this.covidApi.callGetCountry().subscribe(resp => {
+      this.covidApi.callGetCountry().subscribe(resp => {
       this.casesPie = resp.cases;
       this.deathsPie = resp.deaths;
       this.recoveredPie = resp.recovered;
@@ -57,7 +57,7 @@ export class Tab3Page implements OnInit {
   }
 
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.getHistory();
     this.getCountry();
   }
